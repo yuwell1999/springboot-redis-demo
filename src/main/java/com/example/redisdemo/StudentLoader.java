@@ -13,19 +13,19 @@ public class StudentLoader {
     private final ReactiveRedisConnectionFactory factory;
     private final ReactiveRedisOperations<String, Student> studentOps;
 
-    public StudentLoader(ReactiveRedisConnectionFactory factory, ReactiveRedisOperations<String, Student> studentOps) {
+    public StudentLoader(ReactiveRedisConnectionFactory factory, ReactiveRedisOperations<String, Student> coffeeOps) {
         this.factory = factory;
-        this.studentOps = studentOps;
+        this.studentOps = coffeeOps;
     }
 
     @PostConstruct
     public void loadData() {
-        factory.getReactiveClusterConnection().serverCommands().flushAll().thenMany(
-                Flux.just("AAA Redis", "BBB Redis", "CCC Redis")
+        factory.getReactiveConnection().serverCommands().flushAll().thenMany(
+                Flux.just("Jet Black Redis", "Darth Redis", "Black Alert Redis")
                         .map(name -> new Student(UUID.randomUUID().toString(), name))
-                        .flatMap(student -> studentOps.opsForValue().set(student.getId(), student))
-        ).thenMany(studentOps.keys("*")
-                .flatMap(studentOps.opsForValue()::get))
+                        .flatMap(coffee -> studentOps.opsForValue().set(coffee.getId(), coffee)))
+                .thenMany(studentOps.keys("*")
+                        .flatMap(studentOps.opsForValue()::get))
                 .subscribe(System.out::println);
     }
 }
