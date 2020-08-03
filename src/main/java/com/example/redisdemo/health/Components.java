@@ -1,7 +1,7 @@
 /**
  * Copyright 2020 bejson.com
  */
-package com.example.redisdemo.json;
+package com.example.redisdemo.health;
 
 /**
  * Auto-generated: 2020-07-31 16:19:36

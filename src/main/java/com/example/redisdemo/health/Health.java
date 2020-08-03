@@ -1,7 +1,7 @@
 /**
  * Copyright 2020 bejson.com
  */
-package com.example.redisdemo.json;
+package com.example.redisdemo.health;
 
 /**
  * Auto-generated: 2020-07-31 16:19:36
@@ -9,7 +9,7 @@ package com.example.redisdemo.json;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class JsonRootBean {
+public class Health {
 
     private String status;
     private Components components;
