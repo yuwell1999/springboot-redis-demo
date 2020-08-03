@@ -1,0 +1,126 @@
+{
+  "contexts": {
+    "redis-demo": {
+      "mappings": {
+        "dispatcherServlets": {
+          "dispatcherServlet": [
+            {
+              "handler": "org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)",
+              "predicate": "{ /error}",
+              "details": {
+                "handlerMethod": {
+                  "className": "org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController",
+                  "name": "error",
+                  "descriptor": "(Ljavax/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;"
+                },
+                "requestMappingConditions": {
+                  "consumes": [],
+                  "headers": [],
+                  "methods": [],
+                  "params": [],
+                  "patterns": [
+                    "/error"
+                  ],
+                  "produces": []
+                }
+              }
+            },
+            {
+              "handler": "org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)",
+              "predicate": "{ /error, produces [text/html]}",
+              "details": {
+                "handlerMethod": {
+                  "className": "org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController",
+                  "name": "errorHtml",
+                  "descriptor": "(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)Lorg/springframework/web/servlet/ModelAndView;"
+                },
+                "requestMappingConditions": {
+                  "consumes": [],
+                  "headers": [],
+                  "methods": [],
+                  "params": [],
+                  "patterns": [
+                    "/error"
+                  ],
+                  "produces": [
+                    {
+                      "mediaType": "text/html",
+                      "negated": false
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "handler": "ResourceHttpRequestHandler [\"classpath:/META-INF/resources/webjars/\"]",
+              "predicate": "/webjars/**",
+              "details": null
+            },
+            {
+              "handler": "ResourceHttpRequestHandler [\"classpath:/META-INF/resources/\", \"classpath:/resources/\", \"classpath:/static/\", \"classpath:/public/\", \"/\"]",
+              "predicate": "/**",
+              "details": null
+            }
+          ]
+        },
+        "servletFilters": [
+          {
+            "urlPatternMappings": [
+              "/*"
+            ],
+            "servletNameMappings": [],
+            "name": "webMvcMetricsFilter",
+            "className": "org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter"
+          },
+          {
+            "urlPatternMappings": [
+              "/*"
+            ],
+            "servletNameMappings": [],
+            "name": "requestContextFilter",
+            "className": "org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter"
+          },
+          {
+            "urlPatternMappings": [
+              "/*"
+            ],
+            "servletNameMappings": [],
+            "name": "Tomcat WebSocket (JSR356) Filter",
+            "className": "org.apache.tomcat.websocket.server.WsFilter"
+          },
+          {
+            "urlPatternMappings": [
+              "/*"
+            ],
+            "servletNameMappings": [],
+            "name": "characterEncodingFilter",
+            "className": "org.springframework.boot.web.servlet.filter.OrderedCharacterEncodingFilter"
+          },
+          {
+            "urlPatternMappings": [
+              "/*"
+            ],
+            "servletNameMappings": [],
+            "name": "formContentFilter",
+            "className": "org.springframework.boot.web.servlet.filter.OrderedFormContentFilter"
+          }
+        ],
+        "servlets": [
+          {
+            "mappings": [],
+            "name": "default",
+            "className": "org.apache.catalina.servlets.DefaultServlet"
+          },
+          {
+            "mappings": [
+              "/"
+            ],
+            "name": "dispatcherServlet",
+            "className": "org.springframework.web.servlet.DispatcherServlet"
+          }
+        ]
+      },
+      "parentId": null
+    }
+  }
+}

@@ -12,12 +12,14 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class MessagingRedisApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MessagingRedisApplication.class);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         ApplicationContext ctx = SpringApplication.run(MessagingRedisApplication.class, args);
 
@@ -31,6 +33,7 @@ public class MessagingRedisApplication {
             Thread.sleep(500L);
         }
 
+        JsonRequest jsonRequest = new JsonRequest();
         //System.exit(0);
     }
 
