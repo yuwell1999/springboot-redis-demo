@@ -1,5 +1,8 @@
 package com.example.redisdemo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonRequest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JsonRequest.class);
 
     public JsonRequest() throws IOException {
         String baseUrl = "http://localhost:8081/actuator";
@@ -34,6 +38,9 @@ public class JsonRequest {
                 //add("dump");
                 //add("trace");
 
+                add("caches");
+                add("conditions");
+                add("scheduledtasks");
                 add("threaddump");
 
             }
@@ -48,7 +55,8 @@ public class JsonRequest {
             BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 
             String text = br.readLine();
-            System.out.println(text);
+            LOGGER.info(text);
+            //System.out.println(text);
 
             System.out.println();
         }
