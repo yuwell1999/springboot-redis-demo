@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonRequest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JsonRequest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessagingRedisApplication.class);
 
     public JsonRequest() throws IOException {
         String baseUrl = "http://localhost:8081/actuator";
