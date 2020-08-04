@@ -62,10 +62,23 @@ public class StudentController {
 //        return Mono.create(monoSink->monoSink.success(id));
 //    }
 
+    @GetMapping("/get/{id}")
+    public Object getStudents(@PathVariable("id") String id) {
+        System.out.println(redisUtils.getExpire(id));
+        return redisUtils.get(id);
+    }
+
     @GetMapping("/set/{id}/{name}")
-    public Object getStudents(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public Object setStudents(@PathVariable("id") String id, @PathVariable("name") String name) {
         redisUtils.set(id, name);
         System.out.println(redisUtils.getExpire(id));
+        return redisUtils.get(id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public Object deleteById(@PathVariable("id") String id) {
+        redisUtils.del(id);
+        //System.out.println(redisUtils.getExpire(id));
         return redisUtils.get(id);
     }
 }
